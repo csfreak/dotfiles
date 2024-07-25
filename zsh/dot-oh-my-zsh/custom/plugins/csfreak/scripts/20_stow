@@ -1,0 +1,25 @@
+if ! /usr/bin/which -s stow; then
+  brew isntall stow
+fi
+
+BASE=$PWD
+
+if [[ ! -d "~/.dotfiles" ]]; then
+  git clone git@github.com:csfreak/dotfiles.git ~/.dotfiles
+else
+  cd ~/.dotfiles
+  git pull
+  cd $BASE
+fi
+
+if [[ ! -e ~/.stowrc ]]
+  cd ~/.dotfiles
+  stow --dotfiles stow
+  cd $BASE
+fi
+
+for pkg in `find ~/.dotfiles -type d`; do
+  stow -R $pkg
+done
+
+

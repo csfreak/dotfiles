@@ -1,0 +1,7 @@
+alias vscode='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
+
+alias fixdl='xattr -d com.apple.quarantine'
+alias rmhost='ssh-keygen -f ~/.ssh/known_hosts -R'
+
+alias hh=hstr
+

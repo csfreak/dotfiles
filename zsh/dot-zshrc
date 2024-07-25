@@ -1,0 +1,13 @@
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/jaross/.oh-my-zsh"
+
+ZSH_THEME="csfreak"
+ZSH_DISABLE_COMPFIX="true"
+plugins=(virtualenv csfreak timer iterm2 tmux dotenv)
+
+zstyle :omz:plugins:iterm2 shell-integration yes
+zstyle ':omz:update' mode reminder
+source $ZSH/oh-my-zsh.sh
+
+# Created by `pipx` on 2023-07-20 22:16:09
+export PATH="$PATH:/Users/jaross/.local/bin"

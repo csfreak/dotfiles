@@ -1,0 +1,3 @@
+if [[ `uname` == "Darwin" ]]; then
+  ssh-add --apple-load-keychain -q
+fi

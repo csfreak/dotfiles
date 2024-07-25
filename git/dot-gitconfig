@@ -1,0 +1,19 @@
+[user]
+	name = Jason Ross
+	email = jaross@redhat.com
+[credential]
+	helper = cache
+[core]
+	excludesfile = /Users/jaross/.gitignore
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/jaross/.stCommitMsg
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false

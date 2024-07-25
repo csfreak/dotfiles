@@ -1,0 +1,24 @@
+
+export PIKVM="pikvm.homelab.csfreak.com"
+
+alias kvm="launch_kvm"
+
+launch_kvm () {
+    CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    JOBCONTROL="2>&1 1>/dev/null &!"
+    ${CHROME} --app=https://${PIKVM} ${JOBCONTROL}
+}
+
+kvm-dir-to-host () {
+  ssh ${PIKVM} umount /mnt/reuse
+  ssh ${PIKVM} kvmd-otgmsd -i 1 --set-rw yes --set-cdrom no --set-image /var/lib/kvmd/msd/custom/reuse.img
+}
+
+kvm-dir-to-me () {
+  if [ $(ssh $PIKVM kvmd-otgmsd -i 1 | awk 'NR==1{print $3}') != "<none>" ]
+  then
+    ssh $PIKVM kvmd-otgmsd -i 1 --eject
+  fi
+  ssh $PIKVM mount -o remount,rw /var/lib/kvmd/msd
+  ssh $PIKVM mount -o loop,rw /var/lib/kvmd/msd/custom/reuse.img /mnt/reuse
+}

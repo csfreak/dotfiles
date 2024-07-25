@@ -1,0 +1,5 @@
+if [[ "$TERM_PROGRAM" == "iTerm.app" ]] && /usr/bin/which -s tmux; then 
+  export ZSH_TMUX_ITERM2=true
+  export ZSH_TMUX_FIXTERM=false
+  export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
+fi

@@ -1,0 +1,27 @@
+
+
+function activate() {
+  local name="${1:-.venv}"
+  local venvpath="${name:P}"
+
+  if [[ ! -d "$venvpath" ]]; then
+    echo >&2 "Error: no such venv in current directory: $name"
+    return 1
+  fi
+
+  if [[ ! -f "${venvpath}/bin/activate" ]]; then
+    echo >&2 "Error: '${name}' is not a proper virtual environment"
+    return 1
+  fi
+
+  . "${venvpath}/bin/activate" || return $?
+  echo "Activated virtual environment ${name}"
+}
+
+function mkv() {
+  local name="${1:-.venv}"
+  local venvpath="${name:P}"
+
+  /opt/homebrew/bin/python3 -m venv "${name}" || return
+  echo >&2 "Created venv in '${venvpath}'"
+}

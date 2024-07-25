@@ -1,0 +1,24 @@
+typeset -g -A _comps
+
+if [[ ! -f "$ZSH_CACHE_DIR/completions/_oc" ]]; then
+  autoload -Uz _oc
+  _comps[oc]=_oc
+fi
+if [[ ! -f "$ZSH_CACHE_DIR/completions/_opm" ]]; then
+  autoload -Uz _opm
+  _comps[opm]=_opm
+fi
+if [[ ! -f "$ZSH_CACHE_DIR/completions/_golangci-lint" ]]; then
+  autoload -Uz _golangci-lint
+  _comps[golangci-lint]=_golangci-lint
+fi
+if [[ ! -f "$ZSH_CACHE_DIR/completions/_roxctl" ]]; then
+  autoload -Uz _roxctl
+  _comps[roxctl]=_roxctl
+fi
+
+
+oc completion zsh >| "$ZSH_CACHE_DIR/completions/_oc" &|
+~/.local/bin/opm completion zsh >| "$ZSH_CACHE_DIR/completions/_opm" &|
+golangci-lint completion zsh >| "$ZSH_CACHE_DIR/completions/_golangci-lint" &|
+~/.local/bin/roxctl completion zsh >| "$ZSH_CACHE_DIR/completions/_roxctl" &|
